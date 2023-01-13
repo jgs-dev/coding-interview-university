@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 struct LinkedList
 {
@@ -15,7 +16,7 @@ struct Node
 
 int size(struct LinkedList *myLinkedList)
 {
-  if (!myLinkedList)
+  if (!myLinkedList->head)
     return 0;
   struct Node *current = myLinkedList->head;
   int count = 1;
@@ -28,12 +29,26 @@ int size(struct LinkedList *myLinkedList)
   return count;
 }
 
+bool empty(struct LinkedList *myLinkedList)
+{
+  if (!myLinkedList->head)
+    return true;
+  return false;
+}
+
+int value_at(int index){
+  return 0;
+}
+
+struct Node head;
+struct LinkedList myLinkedList = {&head, &head};
+struct Node newOne = {NULL, &head, 2};
+
+
 int main()
 {
-  struct Node head;
-  struct LinkedList myLinkedList = {&head, &head};
-  struct Node newOne = {NULL, &head, 2};
-  head.next = &newOne;
-  printf("%d Number of nodes in the linked list", size(&myLinkedList));
+  head.next = &newOne;  
+  printf("%d Number of nodes in the linked list\n", size(&myLinkedList));
+  printf(empty(&myLinkedList) ? "Is empty" : "Not empty");
   return 0;
 }
