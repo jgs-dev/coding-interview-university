@@ -22,3 +22,4 @@ Thumbs.db
 # User
 *.out
 test.c
+.vscode/settings.json
