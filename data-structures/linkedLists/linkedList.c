@@ -14,11 +14,13 @@ struct Node
   int value;
 };
 
-int size(struct LinkedList *myLinkedList)
+struct LinkedList myLinkedList = {NULL, NULL};
+
+int size()
 {
-  if (!myLinkedList->head)
+  if (!myLinkedList.head)
     return 0;
-  struct Node *current = myLinkedList->head;
+  struct Node *current = myLinkedList.head;
   int count = 1;
   while (current->next)
   {
@@ -29,26 +31,38 @@ int size(struct LinkedList *myLinkedList)
   return count;
 }
 
-bool empty(struct LinkedList *myLinkedList)
+bool empty()
 {
-  if (!myLinkedList->head)
+  if (!myLinkedList.head)
     return true;
   return false;
 }
 
-int value_at(int index){
-  return 0;
+int value_at(int index)
+{
+  if (0 == index)
+    return myLinkedList.head->value;
+  int counter = 0;
+  struct Node *current = myLinkedList.head;
+  while (current->next && counter < index)
+  {
+    current = current->next;
+    ++counter;
+  }
+
+  return current->value;
 }
-
-struct Node head;
-struct LinkedList myLinkedList = {&head, &head};
-struct Node newOne = {NULL, &head, 2};
-
 
 int main()
 {
-  head.next = &newOne;  
-  printf("%d Number of nodes in the linked list\n", size(&myLinkedList));
-  printf(empty(&myLinkedList) ? "Is empty" : "Not empty");
+  struct Node head = {NULL, NULL, 1};
+  myLinkedList.head = &head;
+  myLinkedList.tail = &head;
+  struct Node newOne = {NULL, &head, 2};
+  head.next = &newOne;
+
+  printf("%d Number of nodes in the linked list\n", size());
+  printf(empty() ? "Is empty\n" : "Not empty\n");
+  printf("%d is the value at index 0\n",value_at(1) );
   return 0;
 }

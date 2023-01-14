@@ -665,7 +665,7 @@ if you can identify the runtime complexity of different algorithms. It's a super
   - [ ] Implement (I did with tail pointer & without):
     - [x] size() - returns number of data elements in list
     - [x] empty() - bool returns true if empty
-    - [ ] value_at(index) - returns the value of the nth item (starting at 0 for first)
+    - [x] value_at(index) - returns the value of the nth item (starting at 0 for first)
     - [ ] push_front(value) - adds an item to the front of the list
     - [ ] pop_front() - remove front item and return its value
     - [ ] push_back(value) - adds an item at the end
